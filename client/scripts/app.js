@@ -5,6 +5,7 @@ var App = {
   username: 'anonymous',
 
   initialize: function() {
+    // This is the username provided by user via alert
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -14,14 +15,14 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
 
+      Messages.result = data;
+      MessagesView.render();
       callback();
     });
   },
