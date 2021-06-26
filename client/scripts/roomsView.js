@@ -5,18 +5,20 @@ var RoomsView = {
 
 
   initialize: function() {
-    //RoomsView.$button.click(RoomsView.render);
+    RoomsView.$button.click(Rooms.add);
+    RoomsView.$select.change(Rooms.filter);
   },
 
   render: function() {
-    //var $roomNames = ['Lobby', 'testing', 'space'];
+    RoomsView.$select.html('');
+    RoomsView.$select.prepend($('<option selected disabled>Select</option>'));
+    for ( var key of Rooms.set) {
+      RoomsView.renderRoom(key);
+    }
+  },
 
-    //$.each($roomNames, function (room) {
-    // $select.append($('<options>', {
-    // value: room,
-    //text: room
-    //}));
-    //});
-
+  renderRoom: function(room) {
+    RoomsView.$select.append($(
+      '<option value="' + room + '">' + room + '</option>'));
   }
 };

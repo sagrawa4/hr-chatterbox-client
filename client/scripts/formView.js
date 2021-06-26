@@ -10,7 +10,7 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
     var $message = $('#message').val();
-    var $room = null;
+    var $room = Rooms.roomname;
     var message = {
       username: App.username,
       text: $message,
